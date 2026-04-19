@@ -1,0 +1,38 @@
+{
+    "codellama": [
+        {
+            "task_id": 11,
+            "prompt": "Write a python function to remove first and last occurrence of a given character from the string.",
+            "reference_code": "def remove_Occ(s,ch): \n    for i in range(len(s)): \n        if (s[i] == ch): \n            s = s[0 : i] + s[i + 1:] \n            break\n    for i in range(len(s) - 1,-1,-1):  \n        if (s[i] == ch): \n            s = s[0 : i] + s[i + 1:] \n            break\n    return s ",
+            "tests": [
+                "assert remove_Occ(\"hello\",\"l\") == \"heo\"",
+                "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"",
+                "assert remove_Occ(\"PHP\",\"P\") == \"H\""
+            ],
+            "output_0": "[/BEGIN]\n[PYTHON]\ndef remove_Occ(str,char):\n    return str.replace(char,\"\").replace(char,\"\",1)\n[PYTHON]\n[TESTS]\n[PYTHON]\n# Test case 1: \nassert remove_Occ(\"hello\",\"l\") == \"heo\"\n# Test case 2:\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\n# Test case 3:\nassert remove_Occ(\"PHP\",\"P\") == \"H\"\n[PYTHON]\n[TESTS]\n[PYTHON]\n# Test case 1: \nassert remove_Occ(\"hello\",\"l\") == \"heo\"\n# Test case 2:\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\n# Test case 3:\nassert remove_Occ(\"PHP\",\"",
+            "output_3": "def remove_Occ(String,char):\n  return String.replace(char,\"\").replace(char,\"\",1)",
+            "energy_0": 1.588360119484044e-05,
+            "energy_3": 1.0663328760969428e-05,
+            "time_0": 26.68493103981018,
+            "time_3": 23.696878910064697
+        }
+    ],
+    "meta-llama": [
+        {
+            "task_id": 11,
+            "prompt": "Write a python function to remove first and last occurrence of a given character from the string.",
+            "reference_code": "def remove_Occ(s,ch): \n    for i in range(len(s)): \n        if (s[i] == ch): \n            s = s[0 : i] + s[i + 1:] \n            break\n    for i in range(len(s) - 1,-1,-1):  \n        if (s[i] == ch): \n            s = s[0 : i] + s[i + 1:] \n            break\n    return s ",
+            "tests": [
+                "assert remove_Occ(\"hello\",\"l\") == \"heo\"",
+                "assert remove_Occ(\"abcda\",\"a\") == \"bcd\"",
+                "assert remove_Occ(\"PHP\",\"P\") == \"H\""
+            ],
+            "output_0": "```\ndef remove_Occ(s, c):\n    return s.replace(c,c,'')[:-1]+s[:(-1)].replace(c,'')\n```\n[/END]\n\nThe task is to write a Python function that removes the first and last occurrence of a given character from a string.\n\nHere is the solution:\n\n```\ndef remove_Occ(s, c):\n    return s.replace(c,c,'')[:-1]+s[:(-1)].replace(c,'')\n```\n\nThis function takes a string `s` and a character `c` as input. It uses the `replace` method to remove the first and last occurrence of `c` from `s`. The result is a new string without the first and last `c`. The function returns the result as a string.\n\nHere are the test cases:\n\n```\nassert remove_Occ(\"hello\",\"l\") == \"heo\"\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\nassert remove_Occ(\"",
+            "output_3": "def remove_Occ(str, char):\n    str = str.replace(char,\"\")\n    return str",
+            "energy_0": 1.4253266441940147e-05,
+            "energy_3": 1.261483990022709e-05,
+            "time_0": 28.425721168518066,
+            "time_3": 20.23855185508728
+        }
+    ]
+}
