@@ -1,7 +1,5 @@
 import json
-import time
 from llama_cpp import Llama
-from codecarbon import EmissionsTracker
 
 # ---------------- CONFIG ----------------
 MODELS = {
@@ -10,12 +8,14 @@ MODELS = {
 }
 
 DATASET_PATH = "./mbpp/sanitized-mbpp.json"
-N_TASKS = 1
-MAX_TOKENS = 200
+
+N_TASKS      = 20
+N_SAMPLES    = 10    # 10 outputs por task por estratégia
+MAX_TOKENS   = 200
+TEMPERATURE  = 0.8   # temperatura para gerar outputs variados
 
 # ---------------- LOAD DATA ----------------
 def load_mbpp(path):
-    data = []
     with open(path, "r") as f:
         data = json.load(f)
     return data
@@ -69,25 +69,21 @@ def build_0shot_prompt(task):
         "[BEGIN]\n"
     )
 
-# ---------------- INFERENCE ----------------
-def run_inference(llm, prompt, project_name):
-    tracker = EmissionsTracker(project_name=project_name, output_dir="./outputs")
-
-    start = time.time()
-    tracker.start()
-
-    output = llm(
-        prompt=prompt,
-        max_tokens=MAX_TOKENS,
-        echo=False,
-        stop=["[DONE]"]
-    )
-
-    energy = tracker.stop()
-    elapsed = time.time() - start
-
-    text = output["choices"][0]["text"].strip()
-    return text, energy, elapsed
+# ---------------- INFERENCE (sem energia, sem tempo) ----------------
+def run_inference_n(llm, prompt, n):
+    """Gera n outputs para o mesmo prompt."""
+    outputs = []
+    for k in range(n):
+        output = llm(
+            prompt=prompt,
+            max_tokens=MAX_TOKENS,
+            echo=False,
+            stop=["[DONE]"],
+            temperature=TEMPERATURE,
+        )
+        text = output["choices"][0]["text"].strip()
+        outputs.append(text)
+    return outputs
 
 # ---------------- MAIN LOOP ----------------
 all_results = {}
@@ -110,25 +106,23 @@ for model_name, model_path in MODELS.items():
         task_id = task.get("task_id")
         print(f"  [{model_name}] Task {i+1}/{N_TASKS} (task_id={task_id})")
 
-        # 0-shot
-        prompt_0 = build_0shot_prompt(task)
-        code_0, energy_0, time_0 = run_inference(llm, prompt_0, f"{model_name}-0shot")
+        # 0-shot: 10 outputs
+        prompt_0  = build_0shot_prompt(task)
+        outputs_0 = run_inference_n(llm, prompt_0, N_SAMPLES)
+        print(f"    0-shot: {N_SAMPLES} outputs gerados")
 
-        # 3-shot
-        prompt_3 = build_3shot_prompt(few_shot_tasks, task)
-        code_3, energy_3, time_3 = run_inference(llm, prompt_3, f"{model_name}-3shot")
+        # 3-shot: 10 outputs
+        prompt_3  = build_3shot_prompt(few_shot_tasks, task)
+        outputs_3 = run_inference_n(llm, prompt_3, N_SAMPLES)
+        print(f"    3-shot: {N_SAMPLES} outputs gerados")
 
         model_results.append({
             "task_id":        task_id,
             "prompt":         task.get("prompt"),
             "reference_code": task.get("code"),
             "tests":          task.get("test_list"),
-            "output_0":       code_0,
-            "output_3":       code_3,
-            "energy_0":       energy_0,
-            "energy_3":       energy_3,
-            "time_0":         time_0,
-            "time_3":         time_3,
+            "outputs_0":      outputs_0,   # lista com 10 strings
+            "outputs_3":      outputs_3,   # lista com 10 strings
         })
 
     all_results[model_name] = model_results
@@ -137,7 +131,7 @@ for model_name, model_path in MODELS.items():
     del llm
 
 # ---------------- SAVE ----------------
-with open("results.json", "w") as f:
+with open("results_pass10.json", "w") as f:
     json.dump(all_results, f, indent=4)
 
-print("\nResultados guardados em results.json")
+print("\nResultados guardados em results_pass10.json")
