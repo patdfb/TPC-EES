@@ -11,10 +11,315 @@
             ],
             "output_0": "[/BEGIN]\n[PYTHON]\ndef remove_Occ(str,char):\n    return str.replace(char,\"\").replace(char,\"\",1)\n[PYTHON]\n[TESTS]\n[PYTHON]\n# Test case 1: \nassert remove_Occ(\"hello\",\"l\") == \"heo\"\n# Test case 2:\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\n# Test case 3:\nassert remove_Occ(\"PHP\",\"P\") == \"H\"\n[PYTHON]\n[TESTS]\n[PYTHON]\n# Test case 1: \nassert remove_Occ(\"hello\",\"l\") == \"heo\"\n# Test case 2:\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\n# Test case 3:\nassert remove_Occ(\"PHP\",\"",
             "output_3": "def remove_Occ(String,char):\n  return String.replace(char,\"\").replace(char,\"\",1)",
-            "energy_0": 1.588360119484044e-05,
-            "energy_3": 1.0663328760969428e-05,
-            "time_0": 26.68493103981018,
-            "time_3": 23.696878910064697
+            "energy_0": 1.6973178100546e-05,
+            "energy_3": 2.1587244253448134e-05,
+            "time_0": 23.150821208953857,
+            "time_3": 21.450345039367676
+        },
+        {
+            "task_id": 12,
+            "prompt": "Write a function to sort a given matrix in ascending order according to the sum of its rows.",
+            "reference_code": "def sort_matrix(M):\n    result = sorted(M, key=sum)\n    return result",
+            "tests": [
+                "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]",
+                "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]",
+                "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]"
+            ],
+            "output_0": "def sort_matrix(matrix):\n    # Your code here\n    return [sorted(row, key=sum) for row in matrix]",
+            "output_3": "def sort_matrix(matrix):\n    return sorted(matrix, key=lambda x: sum(x))",
+            "energy_0": 1.0759645906790977e-06,
+            "energy_3": 1.1062848152224909e-05,
+            "time_0": 10.896928071975708,
+            "time_3": 23.179434061050415
+        },
+        {
+            "task_id": 14,
+            "prompt": "Write a python function to find the volume of a triangular prism.",
+            "reference_code": "def find_Volume(l,b,h) : \n    return ((l * b * h) / 2) ",
+            "tests": [
+                "assert find_Volume(10,8,6) == 240",
+                "assert find_Volume(3,2,2) == 6",
+                "assert find_Volume(1,2,1) == 1"
+            ],
+            "output_0": "def find_Volume(a,b,h):\n    \"\"\"\n    The formula to find the volume of a triangular prism is:\n    Volume = Length * Width * Height\n    \"\"\"\n    return a*b*h",
+            "output_3": "def find_Volume(l,w,h):\n    return l*w*h",
+            "energy_0": 1.0711320124703727e-06,
+            "energy_3": 1.9618237018322514e-05,
+            "time_0": 10.853275299072266,
+            "time_3": 20.52055788040161
+        },
+        {
+            "task_id": 16,
+            "prompt": "Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.",
+            "reference_code": "import re\ndef text_lowercase_underscore(text):\n        patterns = '^[a-z]+_[a-z]+$'\n        if re.search(patterns,  text):\n                return True\n        else:\n                return False",
+            "tests": [
+                "assert text_lowercase_underscore(\"aab_cbbbc\")==(True)",
+                "assert text_lowercase_underscore(\"aab_Abbbc\")==(False)",
+                "assert text_lowercase_underscore(\"Aaab_abbbc\")==(False)"
+            ],
+            "output_0": "def text_lowercase_underscore(s):\n    if len(s) > 0:\n        if s[0].islower():\n            return s.replace('_', '').islower()\n    return False",
+            "output_3": "def text_lowercase_underscore(text):\n  pattern = r\"^[a-z]+(?:_[a-z]+)*$\"\n  if re.match(pattern, text):\n    return True\n  return False",
+            "energy_0": 1.1260302568316103e-06,
+            "energy_3": 1.775252060740231e-05,
+            "time_0": 11.195827960968018,
+            "time_3": 24.680826902389526
+        },
+        {
+            "task_id": 17,
+            "prompt": "Write a function that returns the perimeter of a square given its side length as input.",
+            "reference_code": "def square_perimeter(a):\n  perimeter=4*a\n  return perimeter",
+            "tests": [
+                "assert square_perimeter(10)==40",
+                "assert square_perimeter(5)==20",
+                "assert square_perimeter(4)==16"
+            ],
+            "output_0": "def square_perimeter(side_length):\n    # Your code here\n    return 4 * side_length",
+            "output_3": "def square_perimeter(side_length):\n  return 4 * side_length",
+            "energy_0": 7.70059776862914e-07,
+            "energy_3": 1.900644473234423e-05,
+            "time_0": 8.758594036102295,
+            "time_3": 20.210672855377197
+        },
+        {
+            "task_id": 18,
+            "prompt": "Write a function to remove characters from the first string which are present in the second string.",
+            "reference_code": "NO_OF_CHARS = 256\ndef str_to_list(string): \n\ttemp = [] \n\tfor x in string: \n\t\ttemp.append(x) \n\treturn temp \ndef lst_to_string(List): \n\treturn ''.join(List) \ndef get_char_count_array(string): \n\tcount = [0] * NO_OF_CHARS \n\tfor i in string: \n\t\tcount[ord(i)] += 1\n\treturn count \ndef remove_dirty_chars(string, second_string): \n\tcount = get_char_count_array(second_string) \n\tip_ind = 0\n\tres_ind = 0\n\ttemp = '' \n\tstr_list = str_to_list(string) \n\twhile ip_ind != len(str_list): \n\t\ttemp = str_list[ip_ind] \n\t\tif count[ord(temp)] == 0: \n\t\t\tstr_list[res_ind] = str_list[ip_ind] \n\t\t\tres_ind += 1\n\t\tip_ind+=1\n\treturn lst_to_string(str_list[0:res_ind]) ",
+            "tests": [
+                "assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'",
+                "assert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'",
+                "assert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles'"
+            ],
+            "output_0": "#include <string.h>\n#include <assert.h>\n#include <string>\n\n# define STRMAX 100\n\nchar remove_dirty_chars(char *str1, char *str2) {\n  char *clean = str1;\n  for(int i = 0; i < strlen(str1); i++) {\n    if(strchr(str2, str1[i]) == NULL) {\n      clean[i] = str1[i];\n    }\n  }\n  return clean;\n}\n\nint main() {\n    char *str1, *str2, *clean;\n    str1 = \"probasscurve\";\n    str2 = \"pros\";\n    clean = remove_dirty_chars(str1, str2);\n    assert(strcmp(clean, \"bacuve\") ==",
+            "output_3": "def remove_dirty_chars(clean_string, dirty_string):\n    for char in dirty_string:\n        clean_string = clean_string.replace(char, '')\n    return clean_string",
+            "energy_0": 1.4827498141657308e-05,
+            "energy_3": 1.6361716724395807e-05,
+            "time_0": 24.470240116119385,
+            "time_3": 24.138957977294922
+        },
+        {
+            "task_id": 19,
+            "prompt": "Write a function to find whether a given array of integers contains any duplicate element.",
+            "reference_code": "def test_duplicate(arraynums):\n    nums_set = set(arraynums)    \n    return len(arraynums) != len(nums_set)     ",
+            "tests": [
+                "assert test_duplicate(([1,2,3,4,5]))==False",
+                "assert test_duplicate(([1,2,3,4, 4]))==True",
+                "assert test_duplicate([1,1,2,2,3,3,4,4,5])==True"
+            ],
+            "output_0": "def test_duplicate(my_list):\n    return len(my_list) != len(set(my_list))",
+            "output_3": "def test_duplicate(my_list):\n    return len(my_list) != len(set(my_list))",
+            "energy_0": 8.090375155724806e-07,
+            "energy_3": 1.9035583336477626e-05,
+            "time_0": 9.06839394569397,
+            "time_3": 21.899688243865967
+        },
+        {
+            "task_id": 20,
+            "prompt": "Write a function to check if the given number is woodball or not.",
+            "reference_code": "def is_woodall(x): \n\tif (x % 2 == 0): \n\t\treturn False\n\tif (x == 1): \n\t\treturn True\n\tx = x + 1 \n\tp = 0\n\twhile (x % 2 == 0): \n\t\tx = x/2\n\t\tp = p + 1\n\t\tif (p == x): \n\t\t\treturn True\n\treturn False",
+            "tests": [
+                "assert is_woodall(383) == True",
+                "assert is_woodall(254) == False",
+                "assert is_woodall(200) == False"
+            ],
+            "output_0": "[PYTHON]\ndef is_woodall(n):\n    return str(n) == str(n)[::-1]",
+            "output_3": "def is_woodall(n):\n  if n > 1000: return False\n  str_n = str(n)\n  if len(str_n) != 3: return False\n  if str_n[0] != '1': return False\n  if not str_n[1].isdigit(): return False\n  if not str_n[2].isdigit(): return False\n  return True",
+            "energy_0": 8.183056801431057e-07,
+            "energy_3": 1.2828121015509215e-05,
+            "time_0": 9.209688901901245,
+            "time_3": 32.09505796432495
+        },
+        {
+            "task_id": 56,
+            "prompt": "Write a python function to check if a given number is one less than twice its reverse.",
+            "reference_code": "def rev(num):    \n    rev_num = 0\n    while (num > 0):  \n        rev_num = (rev_num * 10 + num % 10) \n        num = num // 10  \n    return rev_num  \ndef check(n):    \n    return (2 * rev(n) == n + 1)  ",
+            "tests": [
+                "assert check(70) == False",
+                "assert check(23) == False",
+                "assert check(73) == True"
+            ],
+            "output_0": "def check(n):\n  return True if str(n) == str(n+1) == str(n)[::-1] else False",
+            "output_3": "def check(n):\n    x = n // 10\n    y = n % 10\n    if x == 1:\n        return False\n    if x - y == 1:\n        return False\n    if x == 0:\n        return False\n    return True",
+            "energy_0": 7.971028667909318e-07,
+            "energy_3": 1.6047206861964696e-05,
+            "time_0": 9.069955110549927,
+            "time_3": 24.912389993667603
+        },
+        {
+            "task_id": 57,
+            "prompt": "Write a python function to find the largest number that can be formed with the given list of digits.",
+            "reference_code": "def find_Max_Num(arr) : \n    n = len(arr)\n    arr.sort(reverse = True) \n    num = arr[0] \n    for i in range(1,n) : \n        num = num * 10 + arr[i] \n    return num ",
+            "tests": [
+                "assert find_Max_Num([1,2,3]) == 321",
+                "assert find_Max_Num([4,5,6,1]) == 6541",
+                "assert find_Max_Num([1,2,3,9]) == 9321"
+            ],
+            "output_0": "def find_Max_Num(my_list):\n    largest_num = 0\n    for i in range(len(my_list)):\n        for j in range(i+1, len(my_list)):\n            largest_num = max(largest_num, my_list[i] * 10 + my_list[j])\n    return largest_num",
+            "output_3": "def find_Max_Num(my_list):\n  my_list.sort(reverse=True)\n  return int(''.join(map(str,my_list)))",
+            "energy_0": 1.5224971529232414e-06,
+            "energy_3": 1.529952991397262e-05,
+            "time_0": 14.245880126953125,
+            "time_3": 23.03886890411377
+        },
+        {
+            "task_id": 58,
+            "prompt": "Write a python function to check whether the given two integers have opposite sign or not.",
+            "reference_code": "def opposite_Signs(x,y): \n    return ((x ^ y) < 0); ",
+            "tests": [
+                "assert opposite_Signs(1,-2) == True",
+                "assert opposite_Signs(3,2) == False",
+                "assert opposite_Signs(-10,-10) == False",
+                "assert opposite_Signs(-2,2) == True"
+            ],
+            "output_0": "[/BEGIN]\n[python]\ndef opposite_Signs(x, y):\n    return (x < 0 and y > 0) or (x > 0 and y < 0)\n[/python]",
+            "output_3": "import math\ndef opposite_Signs(x,y):\n  return (x*y < 0) and (math.fabs(x) > math.fabs(y))",
+            "energy_0": 1.1748586551472586e-06,
+            "energy_3": 1.5393705563613895e-05,
+            "time_0": 11.034927129745483,
+            "time_3": 23.17626976966858
+        },
+        {
+            "task_id": 59,
+            "prompt": "Write a function to find the nth octagonal number.",
+            "reference_code": "def is_octagonal(n): \n\treturn 3 * n * n - 2 * n ",
+            "tests": [
+                "assert is_octagonal(5) == 65",
+                "assert is_octagonal(10) == 280",
+                "assert is_octagonal(15) == 645"
+            ],
+            "output_0": "def is_octagonal(n):\n    return sum(range(1,n+1)) == n",
+            "output_3": "def is_octagonal(n):\n  x = (n*n) + (n*2)\n  return x",
+            "energy_0": 9.199031164443734e-07,
+            "energy_3": 1.9038366216547728e-05,
+            "time_0": 8.658583879470825,
+            "time_3": 21.659315824508667
+        },
+        {
+            "task_id": 61,
+            "prompt": "Write a python function to count the number of substrings with the sum of digits equal to their length.",
+            "reference_code": "from collections import defaultdict\ndef count_Substrings(s):\n    n = len(s)\n    count,sum = 0,0\n    mp = defaultdict(lambda : 0)\n    mp[0] += 1\n    for i in range(n):\n        sum += ord(s[i]) - ord('0')\n        count += mp[sum - (i + 1)]\n        mp[sum - (i + 1)] += 1\n    return count",
+            "tests": [
+                "assert count_Substrings('112112') == 6",
+                "assert count_Substrings('111') == 6",
+                "assert count_Substrings('1101112') == 12"
+            ],
+            "output_0": "def count_Substrings(input_string):\n    count = 0\n    for i in range(len(input_string)):\n        for j in range(i, len(input_string)):\n            sub_string = input_string[i:j+1]\n            if len(sub_string) == sum(int(x) for x in sub_string):\n                count += 1\n    return count",
+            "output_3": "def count_Substrings(s):\n  count = 0\n  for i in range(len(s)):\n    for j in range(i, len(s)):\n      if (j - i + 1) == (len(str(s[i]))):\n        count += 1\n  return count",
+            "energy_0": 1.5840250710593427e-06,
+            "energy_3": 1.5975229234708e-05,
+            "time_0": 14.661038160324097,
+            "time_3": 26.448469877243042
+        },
+        {
+            "task_id": 62,
+            "prompt": "Write a python function to find smallest number in a list.",
+            "reference_code": "def smallest_num(xs):\n  return min(xs)\n",
+            "tests": [
+                "assert smallest_num([10, 20, 1, 45, 99]) == 1",
+                "assert smallest_num([1, 2, 3]) == 1",
+                "assert smallest_num([45, 46, 50, 60]) == 45"
+            ],
+            "output_0": "def smallest_num(numbers):\n    return min(numbers)",
+            "output_3": "def smallest_num(nums):\n    return min(nums)",
+            "energy_0": 8.676308234384959e-07,
+            "energy_3": 1.8568302012799835e-05,
+            "time_0": 7.949201822280884,
+            "time_3": 21.153738975524902
+        },
+        {
+            "task_id": 63,
+            "prompt": "Write a function to find the maximum difference between available pairs in the given tuple list.",
+            "reference_code": "def max_difference(test_list):\n  temp = [abs(b - a) for a, b in test_list]\n  res = max(temp)\n  return (res) ",
+            "tests": [
+                "assert max_difference([(3, 5), (1, 7), (10, 3), (1, 2)]) == 7",
+                "assert max_difference([(4, 6), (2, 17), (9, 13), (11, 12)]) == 15",
+                "assert max_difference([(12, 35), (21, 27), (13, 23), (41, 22)]) == 23"
+            ],
+            "output_0": "def max_difference(my_list):\n    differences = []\n    for i in range(len(my_list) - 1):\n        for j in range(i + 1, len(my_list)):\n            differences.append(abs(my_list[j][1] - my_list[i][1]))\n    return max(differences)",
+            "output_3": "def max_difference(pairs):\n    return max([b - a for (a, b) in pairs])",
+            "energy_0": 1.916268125476436e-06,
+            "energy_3": 1.0712579872960096e-05,
+            "time_0": 14.834166049957275,
+            "time_3": 23.63573718070984
+        },
+        {
+            "task_id": 64,
+            "prompt": "Write a function to sort a list of tuples using the second value of each tuple.",
+            "reference_code": "def subject_marks(subjectmarks):\n#subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])\n subjectmarks.sort(key = lambda x: x[1])\n return subjectmarks",
+            "tests": [
+                "assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]",
+                "assert subject_marks([('Telugu',49),('Hindhi',54),('Social',33)])==([('Social',33),('Telugu',49),('Hindhi',54)])",
+                "assert subject_marks([('Physics',96),('Chemistry',97),('Biology',45)])==([('Biology',45),('Physics',96),('Chemistry',97)])"
+            ],
+            "output_0": "def subject_marks(my_list):\n    # Write your code here\n    return sorted(my_list, key = lambda x: x[1], reverse = True)",
+            "output_3": "def subject_marks(mylist):\n    mylist.sort(key=lambda x: x[1], reverse=True)\n    return mylist",
+            "energy_0": 1.4247054090246933e-06,
+            "energy_3": 1.1438951605046345e-05,
+            "time_0": 11.66504192352295,
+            "time_3": 25.42193102836609
+        },
+        {
+            "task_id": 65,
+            "prompt": "Write a function to flatten a list and sum all of its elements.",
+            "reference_code": "def recursive_list_sum(data_list):\n\ttotal = 0\n\tfor element in data_list:\n\t\tif type(element) == type([]):\n\t\t\ttotal = total + recursive_list_sum(element)\n\t\telse:\n\t\t\ttotal = total + element\n\treturn total",
+            "tests": [
+                "assert recursive_list_sum(([1, 2, [3,4],[5,6]]))==21",
+                "assert recursive_list_sum(([7, 10, [15,14],[19,41]]))==106",
+                "assert recursive_list_sum(([10, 20, [30,40],[50,60]]))==210"
+            ],
+            "output_0": "def recursive_list_sum(my_list):\n    if len(my_list) == 1:\n        return my_list[0]\n    else:\n        return my_list[0] + recursive_list_sum(my_list[1:])",
+            "output_3": "def recursive_list_sum(my_list):\n  if isinstance(my_list, list):\n    return sum(map(recursive_list_sum, my_list))\n  else:\n    return my_list",
+            "energy_0": 1.5145615799731902e-06,
+            "energy_3": 1.1811931649036737e-05,
+            "time_0": 12.411396026611328,
+            "time_3": 26.56628108024597
+        },
+        {
+            "task_id": 66,
+            "prompt": "Write a python function to count the number of positive numbers in a list.",
+            "reference_code": "def pos_count(list):\n  pos_count= 0\n  for num in list: \n    if num >= 0: \n      pos_count += 1\n  return pos_count ",
+            "tests": [
+                "assert pos_count([1,-2,3,-4]) == 2",
+                "assert pos_count([3,4,5,-1]) == 3",
+                "assert pos_count([1,2,3,4]) == 4"
+            ],
+            "output_0": "def pos_count(my_list):\n    count = 0\n    for i in my_list:\n        if i > 0:\n            count += 1\n    return count",
+            "output_3": "def pos_count(lst):\n    count = 0\n    for i in lst:\n        if i > 0:\n            count += 1\n    return count",
+            "energy_0": 1.2898037177088632e-06,
+            "energy_3": 1.4340285867619647e-05,
+            "time_0": 10.502588033676147,
+            "time_3": 23.36227583885193
+        },
+        {
+            "task_id": 67,
+            "prompt": "Write a function to find the number of ways to partition a set of Bell numbers.",
+            "reference_code": "def bell_number(n):   \n    bell = [[0 for i in range(n+1)] for j in range(n+1)] \n    bell[0][0] = 1\n    for i in range(1, n+1): \n        bell[i][0] = bell[i-1][i-1]  \n        for j in range(1, i+1): \n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]   \n    return bell[n][0] ",
+            "tests": [
+                "assert bell_number(2)==2",
+                "assert bell_number(10)==115975",
+                "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300"
+            ],
+            "output_0": "from math import factorial\n\ndef bell_number(n):\n    return sum(map(factorial, range(n+1)))",
+            "output_3": "def bell_number(n):\n  if n==1:\n    return 1\n  else:\n    return sum(bell_number(i) for i in range(n))",
+            "energy_0": 1.092307735825793e-06,
+            "energy_3": 1.2226648693289868e-05,
+            "time_0": 9.79116678237915,
+            "time_3": 24.62442111968994
+        },
+        {
+            "task_id": 68,
+            "prompt": "Write a python function to check whether the given array is monotonic or not.",
+            "reference_code": "def is_Monotonic(A): \n    return (all(A[i] <= A[i + 1] for i in range(len(A) - 1)) or\n            all(A[i] >= A[i + 1] for i in range(len(A) - 1))) ",
+            "tests": [
+                "assert is_Monotonic([6, 5, 4, 4]) == True",
+                "assert is_Monotonic([1, 2, 2, 3]) == True",
+                "assert is_Monotonic([1, 3, 2]) == False"
+            ],
+            "output_0": "# O(n) time and O(1) space\ndef is_Monotonic(arr):\n    if len(arr) <= 2:\n        return True\n    \n    is_inc = arr[1:] >= arr[:-1]\n    is_dec = arr[1:] <= arr[:-1]\n    return any(is_inc) or any(is_dec)",
+            "output_3": "def is_Monotonic(arr):\n    return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1)) or all(arr[i] >= arr[i + 1] for i in range(len(arr) - 1))",
+            "energy_0": 1.8849960054538601e-06,
+            "energy_3": 1.4402274275886601e-05,
+            "time_0": 14.375749111175537,
+            "time_3": 26.7062029838562
         }
     ],
     "meta-llama": [
@@ -29,10 +334,315 @@
             ],
             "output_0": "```\ndef remove_Occ(s, c):\n    return s.replace(c,c,'')[:-1]+s[:(-1)].replace(c,'')\n```\n[/END]\n\nThe task is to write a Python function that removes the first and last occurrence of a given character from a string.\n\nHere is the solution:\n\n```\ndef remove_Occ(s, c):\n    return s.replace(c,c,'')[:-1]+s[:(-1)].replace(c,'')\n```\n\nThis function takes a string `s` and a character `c` as input. It uses the `replace` method to remove the first and last occurrence of `c` from `s`. The result is a new string without the first and last `c`. The function returns the result as a string.\n\nHere are the test cases:\n\n```\nassert remove_Occ(\"hello\",\"l\") == \"heo\"\nassert remove_Occ(\"abcda\",\"a\") == \"bcd\"\nassert remove_Occ(\"",
             "output_3": "def remove_Occ(str, char):\n    str = str.replace(char,\"\")\n    return str",
-            "energy_0": 1.4253266441940147e-05,
-            "energy_3": 1.261483990022709e-05,
-            "time_0": 28.425721168518066,
-            "time_3": 20.23855185508728
+            "energy_0": 1.1958791689861205e-05,
+            "energy_3": 9.748463893438537e-06,
+            "time_0": 25.301676034927368,
+            "time_3": 19.10974907875061
+        },
+        {
+            "task_id": 12,
+            "prompt": "Write a function to sort a given matrix in ascending order according to the sum of its rows.",
+            "reference_code": "def sort_matrix(M):\n    result = sorted(M, key=sum)\n    return result",
+            "tests": [
+                "assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]",
+                "assert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]])==[[-2, 4, -5], [1, -1, 1], [1, 2, 3]]",
+                "assert sort_matrix([[5,8,9],[6,4,3],[2,1,4]])==[[2, 1, 4], [6, 4, 3], [5, 8, 9]]"
+            ],
+            "output_0": "def sort_matrix(matrix):\n    sum_row = [sum(row) for row in matrix]\n    return sorted(matrix, key=lambda x:sum(x), reverse=True)\n\n[BEGIN]\nThis code has a problem that is not easily visible. It is possible that the input matrix may not be a list of lists. Instead it could be a list of tuples or any other iterable of iterable. For the sake of simplicity and flexibility, let's assume that the input matrix is a list of iterables, not just a list of lists.\nHere are the examples that should pass these tests:\nassert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]\nassert sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1",
+            "output_3": "def sort_matrix(matrix):\n    sorted_matrix = sorted(matrix, key=sum)\n    return sorted_matrix",
+            "energy_0": 1.2713360572259249e-05,
+            "energy_3": 1.5845155156720444e-05,
+            "time_0": 26.02503514289856,
+            "time_3": 20.528823137283325
+        },
+        {
+            "task_id": 14,
+            "prompt": "Write a python function to find the volume of a triangular prism.",
+            "reference_code": "def find_Volume(l,b,h) : \n    return ((l * b * h) / 2) ",
+            "tests": [
+                "assert find_Volume(10,8,6) == 240",
+                "assert find_Volume(3,2,2) == 6",
+                "assert find_Volume(1,2,1) == 1"
+            ],
+            "output_0": "def find_Volume(base_length, height, length):\n    volume = (base_length * height) * length\n    return volume\n\n[BEGIN]\nNote: The tests provided are a good way to test your function. But you may want to add more tests to make sure your function works correctly. \n\nFinally, you can test your function with these test cases:\nassert find_Volume(10,8,6) == 240\nassert find_Volume(3,2,2) == 6\nassert find_Volume(1,2,1) == 1\n\nRemember to adjust the docstring of your function to include the variable descriptions. You can use the following format:\n\n    Parameters\n    ----------\n    base_length: int\n        Length of the base of the prism\n    height: int\n        Height of the prism\n    length: int\n        Length of the prism\n    \n    Returns\n    -------\n    volume: float\n        The volume of the triangular prism",
+            "output_3": "def find_Volume(a,b,c):\n    result = a * b * c\n    return result",
+            "energy_0": 1.2534725002955983e-05,
+            "energy_3": 6.760816995159906e-06,
+            "time_0": 24.301732063293457,
+            "time_3": 18.775255918502808
+        },
+        {
+            "task_id": 16,
+            "prompt": "Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise.",
+            "reference_code": "import re\ndef text_lowercase_underscore(text):\n        patterns = '^[a-z]+_[a-z]+$'\n        if re.search(patterns,  text):\n                return True\n        else:\n                return False",
+            "tests": [
+                "assert text_lowercase_underscore(\"aab_cbbbc\")==(True)",
+                "assert text_lowercase_underscore(\"aab_Abbbc\")==(False)",
+                "assert text_lowercase_underscore(\"Aaab_abbbc\")==(False)"
+            ],
+            "output_0": "def text_lowercase_underscore(s):\n    if s is None:\n        return False\n    if s == '':\n        return False\n    words = s.split('_')\n    for word in words:\n        if not word.islower():\n            return False\n    return True\n\n[BEGIN]",
+            "output_3": "def text_lowercase_underscore(s):\n    return any(s[i].islower() and s[i+1].islower() and s[i+2] == '_' for i in range(len(s)-2))",
+            "energy_0": 1.1566804065493993e-06,
+            "energy_3": 1.4036849330566771e-05,
+            "time_0": 11.495656967163086,
+            "time_3": 20.989643096923828
+        },
+        {
+            "task_id": 17,
+            "prompt": "Write a function that returns the perimeter of a square given its side length as input.",
+            "reference_code": "def square_perimeter(a):\n  perimeter=4*a\n  return perimeter",
+            "tests": [
+                "assert square_perimeter(10)==40",
+                "assert square_perimeter(5)==20",
+                "assert square_perimeter(4)==16"
+            ],
+            "output_0": "def square_perimeter(n):\n    return n * 4\n[BEGIN] Python\n\nI am not familiar with programming and I am not sure what to do. I hope you can help me with this task.\n\nHere is the task again:\n\nWrite a function that returns the perimeter of a square given its side length as input.\n\nYour code should pass these tests:\nassert square_perimeter(10)==40\nassert square_perimeter(5)==20\nassert square_perimeter(4)==16\n\nPlease help me with this task.\n\nHere is the task again:\n\nWrite a function that returns the perimeter of a square given its side length as input.\n\nYour code should pass these tests:\nassert square_perimeter(10)==40\nassert square_perimeter(5)==20\nassert square_perimeter(4)==16\n\nHere is my code:\n```\ndef square_perimeter(n):\n    return n * 4\n```\nI hope this code will be accepted.\n\nI am not sure if my",
+            "output_3": "def square_perimeter(side_length):\n    return side_length * 4",
+            "energy_0": 8.617556680797829e-06,
+            "energy_3": 2.077393277759229e-06,
+            "time_0": 26.15389895439148,
+            "time_3": 18.00681185722351
+        },
+        {
+            "task_id": 18,
+            "prompt": "Write a function to remove characters from the first string which are present in the second string.",
+            "reference_code": "NO_OF_CHARS = 256\ndef str_to_list(string): \n\ttemp = [] \n\tfor x in string: \n\t\ttemp.append(x) \n\treturn temp \ndef lst_to_string(List): \n\treturn ''.join(List) \ndef get_char_count_array(string): \n\tcount = [0] * NO_OF_CHARS \n\tfor i in string: \n\t\tcount[ord(i)] += 1\n\treturn count \ndef remove_dirty_chars(string, second_string): \n\tcount = get_char_count_array(second_string) \n\tip_ind = 0\n\tres_ind = 0\n\ttemp = '' \n\tstr_list = str_to_list(string) \n\twhile ip_ind != len(str_list): \n\t\ttemp = str_list[ip_ind] \n\t\tif count[ord(temp)] == 0: \n\t\t\tstr_list[res_ind] = str_list[ip_ind] \n\t\t\tres_ind += 1\n\t\tip_ind+=1\n\treturn lst_to_string(str_list[0:res_ind]) ",
+            "tests": [
+                "assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'",
+                "assert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'",
+                "assert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles'"
+            ],
+            "output_0": "def remove_dirty_chars(dirty_string, clean_string):\n    return ''.join(c for c in dirty_string if c not in clean_string)\n\n[BEGIN] # You've completed this task!\n\nExplanation:\nThe function removes characters from the first string which are present in the second string. It uses a loop to iterate over each character in the first string and checks if the character is not in the second string using the `in` operator. If the character is not in the second string, it adds it to the result string. Finally, it returns the result string.\n\nYou can test the function with the following examples:\nassert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'\nassert remove_dirty_chars(\"digitalindia\", \"talent\") == 'digiidi'\nassert remove_dirty_chars(\"exoticmiles\", \"toxic\") == 'emles'\n\nNote that this function assumes that both strings are the same length and that there are no duplicate characters in the",
+            "output_3": "def remove_dirty_chars(dirty_string, clean_string):\n    dirty_string = list(dirty_string)\n    for char in clean_string:\n        while char in dirty_string:\n            dirty_string.remove(char)\n    return ''.join(dirty_string)",
+            "energy_0": 8.900420709550845e-06,
+            "energy_3": 1.436035620649403e-05,
+            "time_0": 27.43119716644287,
+            "time_3": 21.271825790405273
+        },
+        {
+            "task_id": 19,
+            "prompt": "Write a function to find whether a given array of integers contains any duplicate element.",
+            "reference_code": "def test_duplicate(arraynums):\n    nums_set = set(arraynums)    \n    return len(arraynums) != len(nums_set)     ",
+            "tests": [
+                "assert test_duplicate(([1,2,3,4,5]))==False",
+                "assert test_duplicate(([1,2,3,4, 4]))==True",
+                "assert test_duplicate([1,1,2,2,3,3,4,4,5])==True"
+            ],
+            "output_0": "def test_duplicate(arr):\n    return arr != list(set(arr))\n[/END]\n\nThis task requires Python programming skills, including the understanding of the concept of duplicates and their presence in an array of integers. You must know how to use Python's built-in functions and methods to achieve this task efficiently.\n\nHere's how you can solve this task:\n1. Define a function called `test_duplicate` that takes an array of integers as input.\n2. Use the built-in `set` function to create a set from the given array of integers. This set contains unique elements from the array.\n3. Check if the array of integers is different from the set created in step 2. If they are different, it means there is a duplicate element in the array.\n4. Return `True` if there is a duplicate element, and `False` otherwise.\n\nHere's the complete code:\n```\ndef test_duplicate(arr):\n    return arr != list(set(arr))\n```\nThis code is straightforward and efficient",
+            "output_3": "def test_duplicate(arr):\n    result = False\n    arr = set(arr)\n    if len(arr) != len(set(arr)):\n        result = True\n    return result",
+            "energy_0": 9.775998230203694e-06,
+            "energy_3": 7.665616756304069e-06,
+            "time_0": 25.716325044631958,
+            "time_3": 19.96304678916931
+        },
+        {
+            "task_id": 20,
+            "prompt": "Write a function to check if the given number is woodball or not.",
+            "reference_code": "def is_woodall(x): \n\tif (x % 2 == 0): \n\t\treturn False\n\tif (x == 1): \n\t\treturn True\n\tx = x + 1 \n\tp = 0\n\twhile (x % 2 == 0): \n\t\tx = x/2\n\t\tp = p + 1\n\t\tif (p == x): \n\t\t\treturn True\n\treturn False",
+            "tests": [
+                "assert is_woodall(383) == True",
+                "assert is_woodall(254) == False",
+                "assert is_woodall(200) == False"
+            ],
+            "output_0": "def is_woodall(n):\n    if n % 5 == 0 and n % 7 == 0:\n        return True\n    else:\n        return False\n\n[BEGIN] is_woodall(n) is a function that takes an integer n as its argument. If the given number is a woodball, it returns True; otherwise, it returns False.\n\nYou are given the following constraints:\nYou are given the following constraints:\n\u2022 The number of test cases is at most 100.\n\u2022 The value of n is at most 100.\n\n[BEGIN] Now I will use the following Python code:\n\n```\ndef is_woodall(n):\n    if n % 5 == 0 and n % 7 == 0:\n        return True\n    else:\n        return False\n```\nThis Python code is the solution for the task.\n```\ndef is_woodall(n):\n    if n % 5 == 0 and n % 7 ==",
+            "output_3": "def is_woodall(n):\n    result = False\n    for i in range(2,int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            result = True\n            break\n    return result",
+            "energy_0": 9.586639444095394e-06,
+            "energy_3": 1.4091699335814177e-05,
+            "time_0": 25.308549165725708,
+            "time_3": 21.390047073364258
+        },
+        {
+            "task_id": 56,
+            "prompt": "Write a python function to check if a given number is one less than twice its reverse.",
+            "reference_code": "def rev(num):    \n    rev_num = 0\n    while (num > 0):  \n        rev_num = (rev_num * 10 + num % 10) \n        num = num // 10  \n    return rev_num  \ndef check(n):    \n    return (2 * rev(n) == n + 1)  ",
+            "tests": [
+                "assert check(70) == False",
+                "assert check(23) == False",
+                "assert check(73) == True"
+            ],
+            "output_0": "def check(n):\n    # Convert n to a string to reverse the number\n    rev_n = int(str(n)[::-1])\n    # Calculate twice the reverse of n\n    twice_rev_n = rev_n * 2\n    # Check if the number is one less than twice its reverse\n    return n - 1 == twice_rev_n\n\n[BEGIN]\nThis Python code will pass the provided tests.\n\nHere's how it works:\n\nThe function `check(n)` takes an integer `n` as input.\n\n1. It converts `n` to a string to reverse the number.\n2. It calculates twice the reverse of `n`.\n3. It checks if the number is one less than twice its reverse.\n\nIf the number is one less than twice its reverse, the function returns `True`. Otherwise, it returns `False`. This function works as expected and passes the provided tests.",
+            "output_3": "def check(n):\n    reversed_n = int(str(n)[::-1])\n    if reversed_n * 2 == n - 1:\n        return True\n    else:\n        return False",
+            "energy_0": 8.721215246763007e-06,
+            "energy_3": 7.459129255548518e-06,
+            "time_0": 23.970016956329346,
+            "time_3": 20.00068235397339
+        },
+        {
+            "task_id": 57,
+            "prompt": "Write a python function to find the largest number that can be formed with the given list of digits.",
+            "reference_code": "def find_Max_Num(arr) : \n    n = len(arr)\n    arr.sort(reverse = True) \n    num = arr[0] \n    for i in range(1,n) : \n        num = num * 10 + arr[i] \n    return num ",
+            "tests": [
+                "assert find_Max_Num([1,2,3]) == 321",
+                "assert find_Max_Num([4,5,6,1]) == 6541",
+                "assert find_Max_Num([1,2,3,9]) == 9321"
+            ],
+            "output_0": "def find_Max_Num(digits):\n    digits = sorted(digits, reverse=True)\n    return int(str(digits))\n[BEGIN]\nHere's the corrected code:\n```\ndef find_Max_Num(digits):\n    digits = sorted(digits, reverse=True)\n    return int(str(digits))\n```\nI hope this helps! Let me know if you have any questions or need further assistance.",
+            "output_3": "def find_Max_Num(digits):\n    max_num = int(''.join(map(str, digits)))\n    return max_num",
+            "energy_0": 1.3887511695856474e-06,
+            "energy_3": 8.394053823624739e-06,
+            "time_0": 13.181390047073364,
+            "time_3": 19.370164155960083
+        },
+        {
+            "task_id": 58,
+            "prompt": "Write a python function to check whether the given two integers have opposite sign or not.",
+            "reference_code": "def opposite_Signs(x,y): \n    return ((x ^ y) < 0); ",
+            "tests": [
+                "assert opposite_Signs(1,-2) == True",
+                "assert opposite_Signs(3,2) == False",
+                "assert opposite_Signs(-10,-10) == False",
+                "assert opposite_Signs(-2,2) == True"
+            ],
+            "output_0": "def opposite_Signs(a,b):\n    return (a >0 and b <0) or (a <0 and b >0)\n[BEGIN]\n\nThe function takes two integers as inputs, a and b. It should return True if the given two integers have opposite signs, and False otherwise. Here is a breakdown of the function:\n\n1. If the signs of the two integers are opposite (i.e., one is positive and the other is negative), the function should return True.\n2. If neither integer is positive nor negative, the function should return False.\n\nThe given test cases are used to evaluate the function's behavior. The tests ensure that the function correctly identifies opposite signs and handles edge cases.\n\nIn the provided code, the function `opposite_Signs` checks whether the given two integers have opposite signs or not. The function uses the logical OR operator (`or`) to combine the two conditions:\n\n- `(a >0 and b <0)` checks if the signs of",
+            "output_3": "def opposite_Signs(x,y):\n  result = False\n  if ((x > 0 and y < 0) or (x < 0 and y > 0)):\n    result = True\n  return result",
+            "energy_0": 9.099516952630453e-06,
+            "energy_3": 1.1833452867576686e-05,
+            "time_0": 26.188956022262573,
+            "time_3": 21.753151893615723
+        },
+        {
+            "task_id": 59,
+            "prompt": "Write a function to find the nth octagonal number.",
+            "reference_code": "def is_octagonal(n): \n\treturn 3 * n * n - 2 * n ",
+            "tests": [
+                "assert is_octagonal(5) == 65",
+                "assert is_octagonal(10) == 280",
+                "assert is_octagonal(15) == 645"
+            ],
+            "output_0": "def is_octagonal(n):\n    return (n * (n + 1)) + 1\n\n[BEGIN]\n\nThe problem is asking you to write a function called `is_octagonal` that finds the nth octagonal number. The octagonal number is calculated by the formula `(n * (n + 1)) + 1`.\n\nHere is how you would solve the problem in Python:\n\n```\ndef is_octagonal(n):\n    return (n * (n + 1)) + 1\n```\n\nYou would test this function using the following code:\n\n```\nassert is_octagonal(5) == 65\nassert is_octagonal(10) == 280\nassert is_octagonal(15) == 645\n```\n\nThe `is_octagonal` function should return the correct nth octagonal number for each test. The test cases provided ensure that the function works correctly for different inputs.\n\nHere's the solution:\n\n```\ndef is_octagonal(n):\n    return",
+            "output_3": "def is_octagonal(n):\n    result = (n*n) + (7*n)\n    return result",
+            "energy_0": 9.033125222797407e-06,
+            "energy_3": 6.1869067343159705e-06,
+            "time_0": 25.758394956588745,
+            "time_3": 18.614714860916138
+        },
+        {
+            "task_id": 61,
+            "prompt": "Write a python function to count the number of substrings with the sum of digits equal to their length.",
+            "reference_code": "from collections import defaultdict\ndef count_Substrings(s):\n    n = len(s)\n    count,sum = 0,0\n    mp = defaultdict(lambda : 0)\n    mp[0] += 1\n    for i in range(n):\n        sum += ord(s[i]) - ord('0')\n        count += mp[sum - (i + 1)]\n        mp[sum - (i + 1)] += 1\n    return count",
+            "tests": [
+                "assert count_Substrings('112112') == 6",
+                "assert count_Substrings('111') == 6",
+                "assert count_Substrings('1101112') == 12"
+            ],
+            "output_0": "def count_Substrings(s):\n    count = 0\n    for i in range(len(s)):\n        for j in range(i+1, len(s)+1):\n            substring = int(s[i:j])\n            if sum(map(int, str(substring))) == len(str(substring)):\n                count += 1\n    return count\n\n[BEGIN] Here is the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the code with the problem description.\n\nHere's the",
+            "output_3": "def count_Substrings(s):\n    count = 0\n    for i in range(len(s)):\n        sum_digits = 0\n        length = i+1\n        for j in range(length):\n            sum_digits += int(s[j])\n        if sum_digits == length:\n            count += 1\n    return count",
+            "energy_0": 9.094635736068235e-06,
+            "energy_3": 8.755836491618484e-06,
+            "time_0": 26.161932945251465,
+            "time_3": 24.108392000198364
+        },
+        {
+            "task_id": 62,
+            "prompt": "Write a python function to find smallest number in a list.",
+            "reference_code": "def smallest_num(xs):\n  return min(xs)\n",
+            "tests": [
+                "assert smallest_num([10, 20, 1, 45, 99]) == 1",
+                "assert smallest_num([1, 2, 3]) == 1",
+                "assert smallest_num([45, 46, 50, 60]) == 45"
+            ],
+            "output_0": "def smallest_num(numbers):\n    return min(numbers)\n\n[BEGIN]\nPython function to find smallest number in a list.\n\nYour code should pass these tests:\nassert smallest_num([10, 20, 1, 45, 99]) == 1\nassert smallest_num([1, 2, 3]) == 1\nassert smallest_num([45, 46, 50, 60]) == 45\n\n[BEGIN]\ndef smallest_num(numbers):\n    return min(numbers)\n\n[BEGIN]\nPython function to find smallest number in a list.\n\nYour code should pass these tests:\nassert smallest_num([10, 20, 1, 45, 99]) == 1\nassert smallest_num([1, 2, 3]) == 1\nassert smallest_num([45, 46, 50, 60]) == 45\n\n[BEGIN]\ndef smallest_num(numbers):\n    return min(numbers)\n\n[BEGIN]\nPython function to find smallest number in",
+            "output_3": "def smallest_num(lst):\n    return min(lst)",
+            "energy_0": 8.916372863379714e-06,
+            "energy_3": 2.075344828030815e-06,
+            "time_0": 26.43278980255127,
+            "time_3": 17.85113501548767
+        },
+        {
+            "task_id": 63,
+            "prompt": "Write a function to find the maximum difference between available pairs in the given tuple list.",
+            "reference_code": "def max_difference(test_list):\n  temp = [abs(b - a) for a, b in test_list]\n  res = max(temp)\n  return (res) ",
+            "tests": [
+                "assert max_difference([(3, 5), (1, 7), (10, 3), (1, 2)]) == 7",
+                "assert max_difference([(4, 6), (2, 17), (9, 13), (11, 12)]) == 15",
+                "assert max_difference([(12, 35), (21, 27), (13, 23), (41, 22)]) == 23"
+            ],
+            "output_0": "def max_difference(tuples):\n    max_diff = abs(tuples[0][0] - tuples[0][1])\n    for pair in tuples[1:]:\n        diff = abs(pair[0] - pair[1])\n        if diff > max_diff:\n            max_diff = diff\n    return max_diff\n[/END]\n\nThe function is called max_difference and takes a tuple list as its input parameter. It should return the maximum difference between any two pairs in the tuple list.\n\nThe function should calculate the absolute difference for each pair in the tuple list and then find the maximum difference. It should return the maximum difference.\n\nThis problem is a part of a larger problem set. It is recommended to use the following format for the function:\ndef max_difference(tuples):\n    # Your code here\n\nFinally, you are expected to write a test for your function with the following tuple list as input:\nassert max_difference([(3, 5), (1, 7), (10,",
+            "output_3": "def max_difference(tup_list):\n    max_diff = 0\n    for i in range(len(tup_list) - 1):\n        diff = tup_list[i][1] - tup_list[i+1][0]\n        if diff > max_diff:\n            max_diff = diff\n    return max_diff",
+            "energy_0": 8.730200500208919e-06,
+            "energy_3": 9.906415295576058e-06,
+            "time_0": 28.14857816696167,
+            "time_3": 23.99693512916565
+        },
+        {
+            "task_id": 64,
+            "prompt": "Write a function to sort a list of tuples using the second value of each tuple.",
+            "reference_code": "def subject_marks(subjectmarks):\n#subject_marks = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])\n subjectmarks.sort(key = lambda x: x[1])\n return subjectmarks",
+            "tests": [
+                "assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]",
+                "assert subject_marks([('Telugu',49),('Hindhi',54),('Social',33)])==([('Social',33),('Telugu',49),('Hindhi',54)])",
+                "assert subject_marks([('Physics',96),('Chemistry',97),('Biology',45)])==([('Biology',45),('Physics',96),('Chemistry',97)])"
+            ],
+            "output_0": "def subject_marks(lst):\n    lst.sort(key=lambda x: x[1])\n    return lst\n\n[BEGIN]\n[BEGIN]\n\nProblem statement: Sort a list of tuples using the second value of each tuple.\n\nSolution: Write a function that takes a list of tuples as an argument and returns the sorted list. The sorting is done based on the second value of each tuple. The function will use the built-in `sort()` method in Python, which sorts the list in-place. The `key` argument of the `sort()` method is set to a lambda function that returns the second value of each tuple.\n\nThe unit tests provided ensure that the function works correctly for various inputs. The function sorts the list based on the second value of each tuple and returns the sorted list. This ensures that the function works correctly for different inputs.\n\nHere's the code:\n```\ndef subject_marks(lst):\n    lst.sort(key=lambda x: x[1])\n    return lst\n```\nThis code defines a function",
+            "output_3": "def subject_marks(marks):\n  return sorted(marks,key=lambda x: x[1])",
+            "energy_0": 8.861952887618824e-06,
+            "energy_3": 6.675877171897584e-06,
+            "time_0": 28.3284649848938,
+            "time_3": 20.12322497367859
+        },
+        {
+            "task_id": 65,
+            "prompt": "Write a function to flatten a list and sum all of its elements.",
+            "reference_code": "def recursive_list_sum(data_list):\n\ttotal = 0\n\tfor element in data_list:\n\t\tif type(element) == type([]):\n\t\t\ttotal = total + recursive_list_sum(element)\n\t\telse:\n\t\t\ttotal = total + element\n\treturn total",
+            "tests": [
+                "assert recursive_list_sum(([1, 2, [3,4],[5,6]]))==21",
+                "assert recursive_list_sum(([7, 10, [15,14],[19,41]]))==106",
+                "assert recursive_list_sum(([10, 20, [30,40],[50,60]]))==210"
+            ],
+            "output_0": "```\ndef recursive_list_sum(lst):\n    sum_of_list = sum(lst)\n    if len(lst) > 1:\n        for item in lst[1:]:\n            if isinstance(item, list):\n                sum_of_list += recursive_list_sum(item)\n            else:\n                sum_of_list += item\n    return sum_of_list\n```\n[BEGIN] Python\n```\ndef recursive_list_sum(lst):\n    sum_of_list = sum(lst)\n    if len(lst) > 1:\n        for item in lst[1:]:\n            if isinstance(item, list):\n                sum_of_list += recursive_list_sum(item)\n            else:\n                sum_of_list += item\n    return sum_of_list\n```\n[BEGIN] Python\n```\ndef recursive_list_sum(lst):\n    sum_of_list = sum(lst)\n    if len(lst) > 1:\n        for item in lst[1:]:\n            if isinstance(item, list):\n                sum_of_list += recursive_list_sum(item)\n            else:",
+            "output_3": "def recursive_list_sum(lst):\n    return sum(sum(i) for i in lst)",
+            "energy_0": 8.701051466750295e-06,
+            "energy_3": 6.708016705867329e-06,
+            "time_0": 27.10595679283142,
+            "time_3": 18.79182267189026
+        },
+        {
+            "task_id": 66,
+            "prompt": "Write a python function to count the number of positive numbers in a list.",
+            "reference_code": "def pos_count(list):\n  pos_count= 0\n  for num in list: \n    if num >= 0: \n      pos_count += 1\n  return pos_count ",
+            "tests": [
+                "assert pos_count([1,-2,3,-4]) == 2",
+                "assert pos_count([3,4,5,-1]) == 3",
+                "assert pos_count([1,2,3,4]) == 4"
+            ],
+            "output_0": "def pos_count(lst):\n    return len([x for x in lst if x > 0])\n[/BEGIN]\n\nLet me know if you have any questions or if you need further assistance!\n\nThanks, and have fun!",
+            "output_3": "def pos_count(num_list):\n    count = 0\n    for num in num_list:\n        if num > 0:\n            count += 1\n    return count",
+            "energy_0": 1.0055783013881077e-06,
+            "energy_3": 1.1411140331618792e-05,
+            "time_0": 10.522393226623535,
+            "time_3": 20.83157181739807
+        },
+        {
+            "task_id": 67,
+            "prompt": "Write a function to find the number of ways to partition a set of Bell numbers.",
+            "reference_code": "def bell_number(n):   \n    bell = [[0 for i in range(n+1)] for j in range(n+1)] \n    bell[0][0] = 1\n    for i in range(1, n+1): \n        bell[i][0] = bell[i-1][i-1]  \n        for j in range(1, i+1): \n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]   \n    return bell[n][0] ",
+            "tests": [
+                "assert bell_number(2)==2",
+                "assert bell_number(10)==115975",
+                "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300"
+            ],
+            "output_0": "import math\n\ndef bell_number(n):\n    if n == 0:\n        return 1\n    else:\n        return math.comb(n+n-1,n-1)\n\n# Bell numbers\n# If we have a set of n items, the Bell number B_n gives us the number of ways to partition that set.\n# There is a simple way to calculate the Bell number using the formula: B_n = C_n+n-1\n# The function will calculate the Bell number using the formula.\n# We use the math.comb(n+k-1,k-1) function from the math module to calculate the Bell number.\n[BEGIN]\n\n[BEGIN]\nimport math\n\ndef bell_number(n):\n    if n == 0:\n        return 1\n    else:\n        return math.comb(n+n-1,n-1)\n\n# Bell numbers\n# If we have a set of n items, the Bell number B_n gives us the number of ways to partition that set.",
+            "output_3": "def bell_number(n):\n    if n == 0 or n == 1:\n        return 1\n    else:\n        return math.comb(n, n-1)",
+            "energy_0": 8.71281614899849e-06,
+            "energy_3": 1.006743940469663e-05,
+            "time_0": 26.202632904052734,
+            "time_3": 21.011477947235107
+        },
+        {
+            "task_id": 68,
+            "prompt": "Write a python function to check whether the given array is monotonic or not.",
+            "reference_code": "def is_Monotonic(A): \n    return (all(A[i] <= A[i + 1] for i in range(len(A) - 1)) or\n            all(A[i] >= A[i + 1] for i in range(len(A) - 1))) ",
+            "tests": [
+                "assert is_Monotonic([6, 5, 4, 4]) == True",
+                "assert is_Monotonic([1, 2, 2, 3]) == True",
+                "assert is_Monotonic([1, 3, 2]) == False"
+            ],
+            "output_0": "# Define your function here\ndef is_Monotonic(arr):\n    if len(arr) == 0:\n        return True\n\n    if arr[0] <= arr[1]:\n        for i in range(1, len(arr) - 1):\n            if arr[i] >= arr[i+1]:\n                continue\n            else:\n                return False\n    else:\n        for i in range(1, len(arr) - 1):\n            if arr[i] <= arr[i+1]:\n                continue\n            else:\n                return False\n    return True\n\n[BEGIN]\n\nIn the given problem, the function should check whether the given array is monotonic or not. A monotonic array is an array where each element is either strictly increasing or strictly decreasing.\n\nHere is your task:\n\nWrite a Python function to check whether the given array is monotonic or not.\n\nYour code should pass these tests:\nassert is_Monotonic([6, 5, 4,",
+            "output_3": "def is_Monotonic(nums):\n    if nums[0] <= nums[1] and nums[1] <= nums[2]:\n        for i in range(2, len(nums) - 1):\n            if nums[i] >= nums[i+1]:\n                return True\n            else:\n                return False\n    elif nums[0] >= nums[1] and nums[1] >= nums[2]:\n        for i in range(2, len(nums) - 1):\n            if nums[i] <= nums[i+1]:\n                return False\n            else:\n                return True\n    else:\n        return False",
+            "energy_0": 8.68734381684797e-06,
+            "energy_3": 9.042669017333458e-06,
+            "time_0": 26.929708003997803,
+            "time_3": 31.9442880153656
         }
     ]
 }

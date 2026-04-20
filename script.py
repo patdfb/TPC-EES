@@ -10,7 +10,7 @@ MODELS = {
 }
 
 DATASET_PATH = "./mbpp/sanitized-mbpp.json"
-N_TASKS = 1
+N_TASKS = 20
 MAX_TOKENS = 200
 
 # ---------------- LOAD DATA ----------------
